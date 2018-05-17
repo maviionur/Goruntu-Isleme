@@ -82,7 +82,7 @@ public class Islemler
 		}
 	
 	
-	public void embedImage()
+	public void hideImage()
 	{
 		BufferedImage o = dosyaOku("C:\\Users\\USER\\Desktop\\araba.jpg");
 		int p;

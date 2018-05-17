@@ -16,7 +16,7 @@ public class Goruntu {
         
         Islemler ıslem = new Islemler();
         
-        ıslem.embedImage();
+        
    
         
         

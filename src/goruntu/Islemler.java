@@ -9,8 +9,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
+
 public class Islemler 
 {
+    
+ 
+    
     
    int [][] bits;
 	
@@ -56,8 +60,9 @@ public class Islemler
 	public int[][] bitOku() {
 		
 		
-		BufferedImage o = dosyaOku("C:\\Users\\USER\\Desktop\\sahin.jpg");//   String path yap 
+		BufferedImage o = dosyaOku("C:\\Users\\USER\\Desktop\\ONUR\\Goruntu\\Java\\eskiyazi.jpg");//   String path yap 
 		bits = new int[o.getWidth()][o.getHeight()];
+                
 		
 	
 		Color color;
@@ -84,7 +89,7 @@ public class Islemler
 	
 	public void hideImage()
 	{
-		BufferedImage o = dosyaOku("C:\\Users\\USER\\Desktop\\araba.jpg");
+		BufferedImage o = dosyaOku("C:\\Users\\USER\\Desktop\\ONUR\\Goruntu\\Java\\araba.jpg");
 		int p;
 		
 		int [][]gomulecek = new int[o.getWidth()][o.getHeight()];
@@ -109,11 +114,12 @@ public class Islemler
                         }	
 			}
 		
-		dosyaYaz("C:\\Users\\USER\\Desktop\\gomulu3.jpg",o);
+		dosyaYaz("C:\\Users\\USER\\Desktop\\ONUR\\Goruntu\\Java\\gomulu.jpg",o);
 		
 	}
         
         public void erosion(){
+            
             int row = 3;
             int column = 0;
             int strElement[][] = new int[1][3];
@@ -129,8 +135,8 @@ public class Islemler
             int erodedImage[][] = new int[o.getWidth()][o.getHeight()];
             
             
-            for(int j=1;j<o.getHeight()-2;j++){
-                for(int k=0;k<o.getWidth();k++){
+            for(int j=1;j<mainImage.length-2;j++){
+                for(int k=0;k<mainImage[j].length;k++){
                     
                     if((mainImage[j-1][k] == 1) && (mainImage[j][k] == 1) && (mainImage[j+1][k] == 1)){
                         erodedImage[j][k] = 1;
@@ -151,5 +157,65 @@ public class Islemler
             
             
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          // Best dilate by one solution
+        int [][]dilate(){
+            
+                int[][] image = bitOku(); 
+             for (int i=1; i<image.length-1; i++){
+                 for (int j=1; j<image[i].length-1; j++){
+                     
+                     if (image[i][j] == 1){
+                         image[i-1][j] = 1; // ust
+                         image[i-1][j-1] = 1; // ust
+                         image[i-1][j+1] = 1; // ust
+                         image[i+1][j-1] = 1; // alt
+                         image[i+1][j] = 1; // alt
+                         image[i+1][j+1] = 1; // alt
+                         image[i][j-1] = 1; // sol 
+                         image[i][j+1] = 1; // sağ
+                         image[i][j] = 1; // orta
+                     }
+                    
+                 }
+             }
+             
+             
+             
+             
+             convertImage();
+              
+             return image;
+        }
+        
+        
+        
+        
+        
+        public void convertImage(){
+           int [][]o = bitOku();
+           File f = null;
+           BufferedImage a = dosyaOku("C:\\Users\\USER\\Desktop\\ONUR\\Goruntu\\Java\\eskiyazi.jpg");
+                        BufferedImage img = new BufferedImage(
+                o.length, o[0].length, BufferedImage.TYPE_BYTE_GRAY);  
+            for(int x = 0; x < o.length; x++){
+                for(int y = 0; y<o[x].length; y++){
+                    img.setRGB(x, y, (int)Math.round(o[x][y]));
+                }
+            }
+           dosyaYaz("C:\\Users\\USER\\Desktop\\ONUR\\Goruntu\\Java\\dilation.jpg",img);
+
+                    }
+        
     
 }

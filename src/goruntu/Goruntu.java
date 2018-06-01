@@ -15,10 +15,10 @@ public class Goruntu {
     public static void main(String[] args) {
         
         Islemler ıslem = new Islemler();
-        
-        
+        ıslem.dilate();
+       
    
-        
+       
         
         
       

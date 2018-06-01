@@ -118,57 +118,8 @@ public class Islemler
 		
 	}
         
-        public void erosion(){
-            
-            int row = 3;
-            int column = 0;
-            int strElement[][] = new int[1][3];
-            for(int i=0; i< row; i++){
-                strElement[column][i] = 1;
-                }
-            
-            BufferedImage o = dosyaOku("C:\\Users\\USER\\Desktop\\araba.jpg");
-            int [][]mainImage = new int[o.getWidth()][o.getHeight()];
-            mainImage = bitOku();
-	    int [][]resim = new int[1][3];
-            resim = strElement;
-            int erodedImage[][] = new int[o.getWidth()][o.getHeight()];
-            
-            
-            for(int j=1;j<mainImage.length-2;j++){
-                for(int k=0;k<mainImage[j].length;k++){
-                    
-                    if((mainImage[j-1][k] == 1) && (mainImage[j][k] == 1) && (mainImage[j+1][k] == 1)){
-                        erodedImage[j][k] = 1;
-                    }else{
-                        erodedImage[j][k] = 0;
-                    }
-             
-                }
-                for(int a=0; a<o.getWidth();a++){
-                    erodedImage[0][a] = 0;
-                }
-                for(int b=0; b<o.getWidth();b++){
-                    erodedImage[o.getHeight()-1][b] = 0;
-                }
-                
-            }
-            
-            
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-          // Best dilate by one solution
+      
+          
         int [][]dilate(){
             
                 int[][] image = bitOku(); 
@@ -199,7 +150,7 @@ public class Islemler
         }
         
         
-        
+          
         
         
         public void convertImage(){

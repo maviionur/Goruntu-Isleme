@@ -97,7 +97,7 @@ public class Islemler
 		for(int x=0;x<gomulecek.length;x++){
 			for(int y=0;y<gomulecek[x].length;y++)
 			{
-			 p=o.getRGB(x, y); // hata burda olabilir.Dışarda resim okunup değerler ona göre ayarlanabilir.
+			 p=o.getRGB(x, y); 
 			 
 				if(gomulecek[x][y]==0) 
 				{
